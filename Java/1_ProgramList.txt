@@ -1,0 +1,17 @@
+1. Define a class Product with members product code,product name and price.Create 3 objects of the product and find the product having the lowest price.
+2. Write a menu-driven program to perform matrix operations(Addition,Multiplication,Transpose).
+3. Addition of two complex numbers.
+4. Check whether a matrix is symmetric or not.
+5. Create an array and search for a particular item in the array.
+6. Perform string manipulation(Lowercase,Uppercase,Find the length,Find the substring,Find the index of the occurance of a character in the given string).
+7. Create a Java program with a class for an employee having attributes e_no,e_name,e_salary. Find the total salary of the employee(DA,HRA,Salary).
+8. Create a class employees having attributes e_no,e_name,e_salary. Read 'n' employee data and search for an employee using the e_no(Use the concept of array of objects). 
+    Syntax:- className obj[] = new className[n];
+             employee obj[] = new employee[n];
+9. Write a Java program to sort the strings(compareTo).
+10. Program to calculate area of different shapes using overloaded functions.
+11. Create a class employee with members e_id,name,salary,address. Create constructors to initialize the data members. 
+    Create another class Tacher that inherit the properties of class employee and contain its own data members,teacher name,department,subjects taught and constructors 
+    to initialize these data members. Include a display method to display all the data members. Use array of objects to display the details of 'n' teachers. 
+12. Create an interface having prototypes of functions area and perimeter. Create two classes circle and rectangle which implements the above interface. 
+    Create a menu-driven program to find area and perimeter of objects
