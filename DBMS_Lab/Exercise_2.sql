@@ -72,3 +72,19 @@ join section on course.course_number = section.course_number
 join grade_report on section.section_identifier = grade_report.section_identifier
 join student on grade_report.student_number = student.student_number
 where course.course_name = "Database" and section.semester = "fall";
+
+-- #3
+-- List the prerequisites of the 'Database' course.
+select prerequisite.prerequisite_number,course.course_name, course.course_number from prerequisite
+join course on prerequisite.course_number = course.course_number
+where course.course_name = "Database";
+
+-- #4
+-- Create a view to retrieve the names of all senior students majoring in 'CS' (Computer Science).
+select * from student where class > 1 and major = 'CS';
+
+-- #5
+-- Retrieve the names of all courses taught by Professor King in 2007 and 2008.
+select section.instructor, section.year_year, course.course_name from section
+join course on section.course_number = course.course_number
+where section.year_year between 7 and 8 and  section.instructor = 'King';
