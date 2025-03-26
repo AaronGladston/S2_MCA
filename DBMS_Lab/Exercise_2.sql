@@ -28,3 +28,63 @@ create table prerequisite(course_number varchar(10),
 prerequisite_number varchar(10),
 foreign key (course_number) references course(course_number),
 foreign key (prerequisite_number) references course(course_number));
+
+insert into student(name,student_number,class,major) values
+('Smith','17','1','CS'),
+('Brown','8','2','CS');
+
+insert into course(course_name,course_number,credit_hours,department) values
+('Intro to Computer Science','CS1310','4','CS'),
+('Data Structure','CS3320','4','CS'),
+('Discrete Mathematics','MATH2410','3','MATH'),
+('Database','CS3380','3','CS');
+
+insert into section(section_identifier,course_number,semester,year_year,instructor) values
+('85','MATH2410','Fall','07','King'),
+('92','CS1310','Fall','07','Anderson'),
+('102','CS3320','Spring','08','Kruth'),
+('112','MATH2410','Fall','08','Chang'),
+('119','CS1310','Fall','08','Anderson'),
+('135','CS3380','Fall','08','Stone');
+
+insert into grade_report values
+('17','112','B'),
+('17','119','C'),
+('8','85','A'),
+('8','92','A'),
+('8','102','B'),
+('8','135','A');
+
+insert into prerequisite values
+('CS3380','CS3320'),
+('CS3380','MATH2410'),
+('CS3380','CS1310');
+
+-- #1
+select course.course_name, grade_report.grade, student.name from student 
+join grade_report on grade_report.student_number = student.student_number
+join section on grade_report.section_identifier = section.section_identifier
+join course on section.course_number = course.course_number where  student.name = "Smith";
+
+-- #2
+select student.name, section.semester, course.course_name, grade_report.grade from course 
+join section on course.course_number = section.course_number 
+join grade_report on section.section_identifier = grade_report.section_identifier
+join student on grade_report.student_number = student.student_number
+where course.course_name = "Database" and section.semester = "fall";
+
+-- #3
+-- List the prerequisites of the 'Database' course.
+select prerequisite.prerequisite_number,course.course_name, course.course_number from prerequisite
+join course on prerequisite.course_number = course.course_number
+where course.course_name = "Database";
+
+-- #4
+-- Create a view to retrieve the names of all senior students majoring in 'CS' (Computer Science).
+select * from student where class > 1 and major = 'CS';
+
+-- #5
+-- Retrieve the names of all courses taught by Professor King in 2007 and 2008.
+select section.instructor, section.year_year, course.course_name from section
+join course on section.course_number = course.course_number
+where section.year_year between 7 and 8 and  section.instructor = 'King';
